@@ -1,0 +1,17 @@
+{
+  "name": "js-sdk",
+  "version": "0.0.1",
+  "author": {
+    "name": "Retsly",
+    "email": "support@rets.ly"
+  },
+  "description": "Retsly JS SDK",
+  "homepage": "https://github.com/retsly/js-sdk",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "superagent": "^1.2.0",
+    "qs": "2.3.3",
+    "deepmerge": "^0.2.7"
+  }
+}
