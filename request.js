@@ -23,13 +23,13 @@ class Request {
     return this;
   }
 
-  limit(l = 10) {
-    this.queryObj.limit = l;
+  limit(l) {
+    if (l) this.queryObj.limit = l;
     return this;
   }
 
-  offset(o = 0) {
-    this.queryObj.offset = o;
+  offset(o) {
+    if (o) this.queryObj.offset = o;
     return this;
   }
 
@@ -98,7 +98,7 @@ function appendQuery(queryObj, key, op, value) {
   else if (key && op === undefined && value === undefined) array = key.split(/\s/);
 
   if (array.length === 2) return merge(queryObj, {[array[0]]: {'eq': array[1]}});
-  else if (array.length === 3) return merge(queryObj, {[array[0]]: {[array[1]]: array[2]}});
+  else if (array.length === 3) return merge(queryObj, {[array[0]]: {[getOperator(array[1])]: array[2]}});
   else throw new Error('You must provide a valid query');
 }
 
