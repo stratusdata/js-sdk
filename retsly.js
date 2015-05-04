@@ -2,9 +2,13 @@ let Request = require('./request');
 const BASE_URL = "https://rets.io/api/v1/";
 
 class Retsly {
-  constructor({token, vendor = 'test'}) {
-    this.token = token;
-    this.vendor = vendor;
+  constructor(client, opts) {
+    if (arguments.length === 1) opts = client;
+    if (!opts || !opts.token || typeof opts.token !== 'string')
+      throw new Error('You must provide a valid access token');
+
+    this.token = opts.token;
+    this.vendor = opts.vendor || 'test';
   }
   static create(token, vendor = 'test') {
     return new Retsly({token, vendor});

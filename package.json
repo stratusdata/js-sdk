@@ -13,5 +13,12 @@
     "superagent": "^1.2.0",
     "qs": "2.3.3",
     "deepmerge": "^0.2.7"
+  },
+  "devDependencies" : {
+    "mocha": "^2.2.4"
+  },
+  "scripts": {
+    "start": "babel *.js --out-dir build && node build/index.js",
+    "test": "babel *.js --out-dir build && node_modules/.bin/mocha --reporter spec test"
   }
 }

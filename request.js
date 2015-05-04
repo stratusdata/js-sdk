@@ -4,14 +4,16 @@ let merge = require('deepmerge');
 
 class Request {
   constructor(method, url, token, query = {}) {
+    if (method === undefined || url === undefined || token === undefined)
+      throw new Error('You must provide valid arguments');
     this.method = method;
     this.url = url;
     this.token = token;
-    this.queryObj = query;
+    this.query(query);
   }
 
-  query(q = {}) {
-    if (q.toString() !== '[object Object]') throw new Error('You must provide a valid query');
+  query(q) {
+    if (q === undefined || q.toString() !== '[object Object]') throw new Error('You must provide a valid query');
     this.queryObj = merge(this.queryObj, q)
     return this;
   }
