@@ -1,6 +1,6 @@
 var assert = require('assert');
-var Retsly = require('../build/retsly');
-var Request = require('../build/request');
+var Retsly = require('../dist/retsly');
+var Request = require('../dist/request');
 
 describe('retsly', function () {
   describe('constructor', function () {

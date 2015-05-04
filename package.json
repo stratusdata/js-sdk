@@ -7,7 +7,7 @@
   },
   "description": "Retsly JS SDK",
   "homepage": "https://github.com/retsly/js-sdk",
-  "main": "index.js",
+  "main": "dist/retsly.js",
   "license": "MIT",
   "dependencies": {
     "superagent": "^1.2.0",
@@ -15,10 +15,11 @@
     "deepmerge": "^0.2.7"
   },
   "devDependencies" : {
-    "mocha": "^2.2.4"
+    "mocha": "^2.2.4",
+    "babel": "^5.1.13"
   },
   "scripts": {
-    "start": "babel *.js --out-dir build && node build/index.js",
-    "test": "babel *.js --out-dir build && node_modules/.bin/mocha --reporter spec test"
+    "compile": "node_modules/.bin/babel src --out-dir dist",
+    "test": "npm run compile && node_modules/.bin/mocha --reporter spec test"
   }
 }
