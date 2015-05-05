@@ -58,11 +58,11 @@ Gets a single document with id, optionally takes a callback
 ### request.getAll([query], [callback])
 Gets an array of documents that match the optional query criteria, optionally takes a callback
 
+### request.findOne([query], [callback])
+Gets a single document that match the optional query criteria, and optionally takes a callback. It sets the limit to one and only return the first result and not an array.
+
 ### request.findAll([query], [callback])
 Alias for `request.findAll(query, callback)`
 
 ### request.exec([callback])
 Alias for `reqest.findAll({}, callback)`
-
-### request.findOne([query], [callback])
-Gets a single document that match the optional query criteria, and optionally takes a callback. It sets the limit to one and only return the first result and not an array.
