@@ -49,7 +49,7 @@ Helper function for building queries, works with different signatures.
 ```js
 request.where(['bedrooms', 'lt', 4])
        .where('livingArea', 'gt', 3000)
-       .where('bathrooms, 3)
+       .where('bathrooms', 3)
        .where('garageSpaces eq 2');
 ```
 ### request.get(id, [callback])
