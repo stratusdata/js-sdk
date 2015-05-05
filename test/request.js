@@ -1,5 +1,5 @@
 var assert = require('assert');
-var Request = require('../build/request');
+var Request = require('../dist/request');
 
 describe('request', function () {
   describe('constructor', function () {
