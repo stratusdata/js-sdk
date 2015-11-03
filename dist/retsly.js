@@ -23,7 +23,7 @@ var Retsly = (function () {
     value: function listings() {
       var query = arguments[0] === undefined ? {} : arguments[0];
 
-      var url = getURL('listing', this.vendor);
+      var url = getURL('listings', this.vendor);
       return new Request('get', url, this.token, query);
     }
   }, {
@@ -31,7 +31,7 @@ var Retsly = (function () {
     value: function agents() {
       var query = arguments[0] === undefined ? {} : arguments[0];
 
-      var url = getURL('agent', this.vendor);
+      var url = getURL('agents', this.vendor);
       return new Request('get', url, this.token, query);
     }
   }, {
@@ -39,7 +39,7 @@ var Retsly = (function () {
     value: function offices() {
       var query = arguments[0] === undefined ? {} : arguments[0];
 
-      var url = getURL('office', this.vendor);
+      var url = getURL('offices', this.vendor);
       return new Request('get', url, this.token, query);
     }
   }, {
@@ -47,7 +47,7 @@ var Retsly = (function () {
     value: function openHouses() {
       var query = arguments[0] === undefined ? {} : arguments[0];
 
-      var url = getURL('openhouse', this.vendor);
+      var url = getURL('openhouses', this.vendor);
       return new Request('get', url, this.token, query);
     }
   }, {
@@ -70,7 +70,7 @@ var Retsly = (function () {
 function getURL(resource, vendor) {
   var id = arguments[2] === undefined ? '' : arguments[2];
 
-  return BASE_URL + resource + '/' + vendor + '/' + id;
+  return BASE_URL + vendor + '/' + resource + '/' + id;
 }
 
 module.exports = Retsly;

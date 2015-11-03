@@ -14,19 +14,19 @@ class Retsly {
     return new Retsly({token, vendor});
   }
   listings(query = {}) {
-    let url = getURL('listing', this.vendor);
+    let url = getURL('listings', this.vendor);
     return new Request('get', url, this.token, query);
   }
   agents(query = {}) {
-    let url = getURL('agent', this.vendor);
+    let url = getURL('agents', this.vendor);
     return new Request('get', url, this.token, query);
   }
   offices(query = {}) {
-    let url = getURL('office', this.vendor);
+    let url = getURL('offices', this.vendor);
     return new Request('get', url, this.token, query);
   }
   openHouses(query = {}) {
-    let url = getURL('openhouse', this.vendor);
+    let url = getURL('openhouses', this.vendor);
     return new Request('get', url, this.token, query);
   }
   getRequest(method, url, query) {
@@ -35,7 +35,7 @@ class Retsly {
 }
 
 function getURL(resource, vendor, id = '') {
-  return BASE_URL + resource + '/' + vendor + '/' + id;
+  return BASE_URL + vendor + '/' + resource + '/' + id;
 }
 
 module.exports = Retsly;
