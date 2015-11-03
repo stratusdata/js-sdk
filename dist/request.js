@@ -9,6 +9,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 var http = require('superagent');
 var qs = require('qs').stringify;
 var merge = require('deepmerge');
+var isBrowser = require('is-browser');
 
 var Request = (function () {
   function Request(method, url, token) {
@@ -106,7 +107,9 @@ var Request = (function () {
     key: 'exec',
     value: function exec(cb) {
       var u = getURL(this.url, this.key, this.queryObj);
-      http(this.method.toUpperCase(), u).set('Authorization', 'Bearer ' + this.token).end(cb);
+      var req = http(this.method.toUpperCase(), u).set('Authorization', 'Bearer ' + this.token);
+      if (isBrowser) req.withCredentials();
+      req.end(cb);
       this.key = undefined;
     }
   }]);
