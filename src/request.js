@@ -1,6 +1,7 @@
 let http = require('superagent');
 let qs = require('qs').stringify;
 let merge = require('deepmerge');
+let isBrowser = require('is-browser');
 
 class Request {
   constructor(method, url, token, query = {}) {
@@ -78,9 +79,12 @@ class Request {
 
   exec(cb) {
     let u = getURL(this.url, this.key, this.queryObj);
-    http(this.method.toUpperCase(), u)
-      .set('Authorization', 'Bearer ' + this.token)
-      .end(cb);
+    let req = http(this.method.toUpperCase(), u)
+      .set('Authorization', 'Bearer ' + this.token);
+
+    if(isBrowser) req.withCredentials();
+
+    req.end(cb);
     this.key = undefined;
   }
 }
