@@ -109,7 +109,7 @@ var Request = (function () {
       var u = getURL(this.url, this.key, this.queryObj);
       var req = http(this.method.toUpperCase(), u).set('Authorization', 'Bearer ' + this.token);
       if (isBrowser) req.withCredentials();
-      req.end(cb);
+      req.end(function(err, response) { return cb(err, response.body); });
       this.key = undefined;
     }
   }]);
