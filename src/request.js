@@ -84,7 +84,11 @@ class Request {
 
     if(isBrowser) req.withCredentials();
 
-    req.end(cb);
+    // return the response body to the callback
+    req.end(function(err, response) {
+      return cb(err, response.body);
+    });
+
     this.key = undefined;
   }
 }
