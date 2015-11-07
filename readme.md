@@ -52,6 +52,7 @@ request.where(['bedrooms', 'lt', 4])
        .where('bathrooms', 3)
        .where('garageSpaces eq 2');
 ```
+
 ### request.get(id, [callback])
 Gets a single document with id, optionally takes a callback
 
@@ -66,3 +67,9 @@ Alias for `request.findAll(query, callback)`
 
 ### request.exec([callback])
 Alias for `request.findAll({}, callback)`
+
+### NOTE:
+callbacks follow standard node syntax of:
+```js
+ cb(err, res);
+```
