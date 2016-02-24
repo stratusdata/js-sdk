@@ -51,6 +51,14 @@ var Retsly = (function () {
       return new Request('get', url, this.token, query);
     }
   }, {
+    key: 'summary',
+    value: function summary() {
+      var query = arguments[0] === undefined ? {} : arguments[0];
+
+      var url = getURL('listings/summary', this.vendor);
+      return new Request('get', url, this.token, query);
+    }
+  }, {
     key: 'getRequest',
     value: function getRequest(method, url, query) {
       return new Request(method, url, this.token, query);
