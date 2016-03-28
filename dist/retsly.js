@@ -59,10 +59,24 @@ var Retsly = (function () {
       return new Request('get', url, this.token, query);
     }
   }, {
+    key: 'maps',
+    value: function summary() {
+      var query = arguments[0] === undefined ? {} : arguments[0];
+
+      var url = getURL('listings/maps', this.vendor);
+      return new Request('get', url, this.token, query);
+    } }
+  , {
     key: 'getRequest',
     value: function getRequest(method, url, query) {
       return new Request(method, url, this.token, query);
     }
+  }, {
+	  key: 'raw',
+	  value: function raw(resource, id, ref) {
+		  var url = getURL(resource, this.vendor, id) + '/' + ref;
+		  return new Request('get', url, this.token, {});
+	  }
   }], [{
     key: 'create',
     value: function create(token) {
