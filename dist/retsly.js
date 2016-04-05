@@ -73,9 +73,9 @@ var Retsly = (function () {
     }
   }, {
 	  key: 'raw',
-	  value: function raw(resource, id, ref) {
-		  var url = getURL(resource, this.vendor, id) + '/' + ref;
-		  return new Request('get', url, this.token, {});
+	  value: function raw(resource, id, ref, query) {
+		  var url = getURL(resource, this.vendor, id) + (ref ? ((id ? '/' : '') + ref) : '');
+		  return new Request('get', url, this.token, query || {});
 	  }
   }], [{
     key: 'create',
